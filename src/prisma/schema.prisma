@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Test {
+  id         BigInt   @id @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  name       String?  @default("")
+  phone      String?
+  age        Decimal? @db.Decimal
+}
