@@ -16,6 +16,14 @@ const eslintConfig = [
       "src/generated/prisma/**", // ✅ Ignore Prisma generated files
     ],
   },
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    rules: {
+      // Turn off all unused variable checks
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-unused-vars": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { TSafeTest, TServerData } from "@/types/test";
 import UserForm from "./UserForm";
 import ClientDate from "./ClientDate";
@@ -204,7 +204,7 @@ export default function TestTable({ initialTests }: TServerData) {
                       {test.phone || "N/A"}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">
-                      {test.age !== null ? `${test.age}세` : "N/A"}
+                      {test.age !== null ? test.age : "N/A"}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">
                       <ClientDate date={test.created_at.toString()} />
