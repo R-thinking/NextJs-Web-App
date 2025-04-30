@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { TSafeTest } from "@/types/test";
 import OperationModal, { ModalType, OperationType } from "./OperationModal";
 import { faker } from "@faker-js/faker";
+import { styles } from "@/app/styles/classNames";
 
 interface UserFormProps {
   initialData?: TSafeTest;
@@ -152,31 +153,31 @@ export default function UserForm({
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-black">Name</label>
+            <label className={styles.formLabel}>Name</label>
             <input
               type="text"
               placeholder="Enter name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-400 shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-600 placeholder:font-medium text-black font-medium"
+              className={styles.input}
               disabled={mode === "delete"}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-black">Phone</label>
+            <label className={styles.formLabel}>Phone</label>
             <input
               type="text"
               placeholder="Enter phone number"
               value={phone || ""}
               onChange={(e) => setPhone(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-400 shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-600 placeholder:font-medium text-black font-medium"
+              className={styles.input}
               disabled={mode === "delete"}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-bold text-black">Age</label>
+            <label className={styles.formLabel}>Age</label>
             <input
               type="number"
               placeholder="Enter age"
@@ -184,7 +185,7 @@ export default function UserForm({
               onChange={(e) =>
                 setAge(e.target.value ? Number(e.target.value) : null)
               }
-              className="mt-1 block w-full rounded-md border border-gray-400 shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-600 placeholder:font-medium text-black font-medium"
+              className={styles.input}
               disabled={mode === "delete"}
             />
           </div>
@@ -193,17 +194,15 @@ export default function UserForm({
             <button
               type="button"
               onClick={onCancel}
-              className="px-4 py-2 font-medium rounded-md border border-gray-400 bg-white text-black shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400"
+              className={`px-4 py-2 rounded-md ${styles.secondaryButton}`}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className={`px-4 py-2 font-semibold rounded-md ${
-                mode === "delete"
-                  ? "bg-red-600 hover:bg-red-700"
-                  : "bg-blue-600 hover:bg-blue-700"
-              } text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`px-4 py-2 rounded-md ${
+                mode === "delete" ? styles.dangerButton : styles.primaryButton
+              }`}
             >
               {mode === "create"
                 ? "Create"

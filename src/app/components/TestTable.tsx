@@ -5,6 +5,7 @@ import { TSafeTest, TServerData } from "@/types/test";
 import UserForm from "./UserForm";
 import ClientDate from "./ClientDate";
 import OperationModal, { ModalType, OperationType } from "./OperationModal";
+import { styles } from "@/app/styles/classNames";
 
 export default function TestTable({ initialTests }: TServerData) {
   const [tests, setTests] = useState<TSafeTest[]>(JSON.parse(initialTests));
@@ -252,8 +253,8 @@ export default function TestTable({ initialTests }: TServerData) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <div className="flex justify-between items-center p-4 border-b">
+    <div className={styles.card}>
+      <div className={styles.cardHeader}>
         <div className="relative">
           <input
             type="text"
@@ -277,7 +278,7 @@ export default function TestTable({ initialTests }: TServerData) {
         </div>
         <button
           onClick={handleAddUserClick}
-          className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center"
+          className={`${styles.primaryButton} py-2 px-4 rounded-lg flex items-center`}
           disabled={isCreating}
         >
           <svg
@@ -316,21 +317,11 @@ export default function TestTable({ initialTests }: TServerData) {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">
-                  Name
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">
-                  Phone
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">
-                  Age
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider">
-                  Created
-                </th>
-                <th className="px-6 py-3 text-right text-xs font-bold text-black uppercase tracking-wider">
-                  Actions
-                </th>
+                <th className={styles.tableHeader}>Name</th>
+                <th className={styles.tableHeader}>Phone</th>
+                <th className={styles.tableHeader}>Age</th>
+                <th className={styles.tableHeader}>Created</th>
+                <th className={`${styles.tableHeader} text-right`}>Actions</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -348,21 +339,29 @@ export default function TestTable({ initialTests }: TServerData) {
                   </tr>
                 ) : (
                   <tr key={test.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="font-medium text-black">
+                    <td className={styles.tableCell}>
+                      <div className={styles.tableCellText}>
                         {test.name || "N/A"}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">
+                    <td
+                      className={`${styles.tableCell} text-gray-700 font-medium`}
+                    >
                       {test.phone || "N/A"}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">
+                    <td
+                      className={`${styles.tableCell} text-gray-700 font-medium`}
+                    >
                       {test.age !== null ? test.age : "N/A"}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-700 font-medium">
+                    <td
+                      className={`${styles.tableCell} text-gray-700 font-medium`}
+                    >
                       <ClientDate date={test.created_at.toString()} />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <td
+                      className={`${styles.tableCell} text-right text-sm font-medium`}
+                    >
                       <button
                         onClick={() => {
                           // Cancel any ongoing "add user" operation when edit is clicked

@@ -1,4 +1,5 @@
 import React from "react";
+import { styles } from "@/app/styles/classNames";
 
 // Type of operation for the modal
 export type OperationType = "create" | "update" | "delete";
@@ -79,8 +80,8 @@ export default function OperationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-8 m-4 max-w-md mx-auto w-full">
+    <div className={styles.modalContainer}>
+      <div className={styles.modalContent}>
         <div className="flex justify-between items-center mb-6">
           <h3 className={`text-xl font-bold ${titleColor}`}>{title}</h3>
           <button
@@ -101,7 +102,7 @@ export default function OperationModal({
           {type === "confirm" && (
             <button
               onClick={handleClose}
-              className="px-6 py-3 font-medium rounded-md border border-gray-400 bg-white text-black shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 text-base"
+              className={`px-6 py-3 rounded-md ${styles.secondaryButton} text-base`}
             >
               Cancel
             </button>
@@ -109,7 +110,11 @@ export default function OperationModal({
 
           <button
             onClick={type === "success" ? handleClose : handleConfirm}
-            className={`px-6 py-3 font-semibold rounded-md ${buttonColor} text-white shadow-sm focus:outline-none focus:ring-2 text-base`}
+            className={`px-6 py-3 rounded-md ${
+              operation === "delete" && type === "confirm"
+                ? styles.dangerButton
+                : styles.primaryButton
+            } text-base`}
           >
             {buttonText}
           </button>
