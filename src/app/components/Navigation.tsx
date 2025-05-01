@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import GitHubLink from "./GitHubLink";
 
 export default function Navigation() {
   const pathname = usePathname() || "";
@@ -19,24 +20,31 @@ export default function Navigation() {
   };
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 relative">
       <p className="text-white font-medium mb-2">Rendering Methods:</p>
-      <div className="flex flex-wrap gap-2">
-        <Link href="/" className={linkStyle("/")}>
-          Home
-        </Link>
-        <Link href="/csr" className={linkStyle("/csr")}>
-          CSR
-        </Link>
-        <Link href="/ssr" className={linkStyle("/ssr")}>
-          SSR
-        </Link>
-        <Link href="/ssg" className={linkStyle("/ssg")}>
-          SSG
-        </Link>
-        <Link href="/isr" className={linkStyle("/isr")}>
-          ISR
-        </Link>
+
+      <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-2">
+          <Link href="/" className={linkStyle("/")}>
+            Home
+          </Link>
+          <Link href="/csr" className={linkStyle("/csr")}>
+            CSR
+          </Link>
+          <Link href="/ssr" className={linkStyle("/ssr")}>
+            SSR
+          </Link>
+          <Link href="/ssg" className={linkStyle("/ssg")}>
+            SSG
+          </Link>
+          <Link href="/isr" className={linkStyle("/isr")}>
+            ISR
+          </Link>
+        </div>
+
+        <div className="self-start">
+          <GitHubLink />
+        </div>
       </div>
     </div>
   );
