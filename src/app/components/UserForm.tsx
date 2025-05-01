@@ -117,25 +117,25 @@ export default function UserForm({
   return (
     <>
       {isFormVisible && (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
-            <h3 className="text-md font-semibold text-black mb-2 sm:mb-0">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 sm:mb-4">
+            {/* <h3 className="text-base sm:text-lg font-semibold text-black mb-2 sm:mb-0">
               {mode === "create"
                 ? "Create New User"
                 : mode === "update"
                 ? "Update User"
                 : "Delete User"}
-            </h3>
+            </h3> */}
 
             {mode !== "delete" && (
               <button
                 type="button"
                 onClick={fillRandomData}
-                className="text-blue-600 text-sm font-medium hover:text-blue-800 flex items-center"
+                className="text-blue-600 text-xs sm:text-sm font-medium hover:text-blue-800 flex items-center justify-center sm:justify-start w-full sm:w-auto"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1"
+                  className="h-3 w-3 sm:h-4 sm:w-4 mr-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -152,49 +152,51 @@ export default function UserForm({
             )}
           </div>
 
-          <div>
-            <label className={styles.formLabel}>Name</label>
-            <input
-              type="text"
-              placeholder="Enter name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={styles.input}
-              disabled={mode === "delete"}
-            />
+          <div className="space-y-3 sm:space-y-4">
+            <div>
+              <label className={styles.formLabel}>Name</label>
+              <input
+                type="text"
+                placeholder="Enter name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={styles.input}
+                disabled={mode === "delete"}
+              />
+            </div>
+
+            <div>
+              <label className={styles.formLabel}>Phone</label>
+              <input
+                type="text"
+                placeholder="Enter phone number"
+                value={phone || ""}
+                onChange={(e) => setPhone(e.target.value)}
+                className={styles.input}
+                disabled={mode === "delete"}
+              />
+            </div>
+
+            <div>
+              <label className={styles.formLabel}>Age</label>
+              <input
+                type="number"
+                placeholder="Enter age"
+                value={age === null ? "" : age}
+                onChange={(e) =>
+                  setAge(e.target.value ? Number(e.target.value) : null)
+                }
+                className={styles.input}
+                disabled={mode === "delete"}
+              />
+            </div>
           </div>
 
-          <div>
-            <label className={styles.formLabel}>Phone</label>
-            <input
-              type="text"
-              placeholder="Enter phone number"
-              value={phone || ""}
-              onChange={(e) => setPhone(e.target.value)}
-              className={styles.input}
-              disabled={mode === "delete"}
-            />
-          </div>
-
-          <div>
-            <label className={styles.formLabel}>Age</label>
-            <input
-              type="number"
-              placeholder="Enter age"
-              value={age === null ? "" : age}
-              onChange={(e) =>
-                setAge(e.target.value ? Number(e.target.value) : null)
-              }
-              className={styles.input}
-              disabled={mode === "delete"}
-            />
-          </div>
-
-          <div className="flex justify-end space-x-3">
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-3 space-y-2 sm:space-y-3 space-y-reverse sm:space-y-0 mt-4 sm:mt-6">
             <button
               type="button"
               onClick={onCancel}
-              className={`px-4 py-2 rounded-md ${styles.secondaryButton}`}
+              className="px-4 py-2 rounded-md bg-white text-black border border-gray-300 font-medium text-sm shadow-sm w-full sm:w-24 h-10 flex items-center justify-center"
             >
               Cancel
             </button>
@@ -202,7 +204,7 @@ export default function UserForm({
               type="submit"
               className={`px-4 py-2 rounded-md ${
                 mode === "delete" ? styles.dangerButton : styles.primaryButton
-              }`}
+              } w-full sm:w-24 text-sm h-10 flex items-center justify-center`}
             >
               {mode === "create"
                 ? "Create"

@@ -13,11 +13,11 @@ export default async function TestList() {
 
   return (
     <div className="container mx-auto p-6">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-white">
+      <header className="mb-6 sm:mb-8 max-w-full">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white truncate">
           User Management System
         </h1>
-        <p className="text-white font-medium mt-2">
+        <p className="text-sm sm:text-base text-white font-medium mt-1 sm:mt-2 truncate">
           Manage your team members and their information
         </p>
       </header>

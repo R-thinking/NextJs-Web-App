@@ -79,30 +79,47 @@ export default function OperationModal({
     if (onConfirm) onConfirm();
   };
 
+  // Function to handle overlay click (close modal when clicking outside)
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only close if the click was directly on the overlay (the parent container)
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={styles.modalContainer}>
-      <div className={styles.modalContent}>
-        <div className="flex justify-between items-center mb-6">
-          <h3 className={`text-xl font-bold ${titleColor}`}>{title}</h3>
+    <div className={styles.modalContainer} onClick={handleOverlayClick}>
+      <div
+        className={`${styles.modalContent} w-full max-w-md mx-auto`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex justify-between items-center mb-4 sm:mb-6 px-4 sm:px-6">
+          <h3 className={`text-lg sm:text-xl font-bold ${titleColor}`}>
+            {title}
+          </h3>
           <button
             onClick={handleClose}
-            className="text-gray-500 hover:text-gray-700 text-xl"
+            className="text-gray-500 hover:text-gray-700 text-lg sm:text-xl"
           >
             ✕
           </button>
         </div>
 
-        <p className="text-black text-lg mb-8">{message}</p>
+        <p className="text-black text-sm sm:text-lg mb-5 sm:mb-6 px-4 sm:px-6">
+          {message}
+        </p>
 
         <div
-          className={`flex justify-end ${
-            type === "confirm" ? "space-x-4" : ""
+          className={`flex flex-col-reverse sm:flex-row sm:justify-end px-4 sm:px-6 pb-4 ${
+            type === "confirm"
+              ? "sm:space-x-4 space-y-2 space-y-reverse sm:space-y-0"
+              : ""
           }`}
         >
           {type === "confirm" && (
             <button
               onClick={handleClose}
-              className={`px-6 py-3 rounded-md ${styles.secondaryButton} text-base`}
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-md ${styles.secondaryButton} text-xs sm:text-base w-full sm:w-auto`}
             >
               Cancel
             </button>
@@ -110,11 +127,11 @@ export default function OperationModal({
 
           <button
             onClick={type === "success" ? handleClose : handleConfirm}
-            className={`px-6 py-3 rounded-md ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-md ${
               operation === "delete" && type === "confirm"
                 ? styles.dangerButton
                 : styles.primaryButton
-            } text-base`}
+            } text-xs sm:text-base w-full sm:w-auto`}
           >
             {buttonText}
           </button>
