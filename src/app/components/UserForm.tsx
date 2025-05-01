@@ -93,12 +93,6 @@ export default function UserForm({
 
   // Handle modal closing
   const handleModalClose = () => {
-    console.log(
-      "UserForm handleModalClose called, currentModal:",
-      currentModal,
-      "mode:",
-      mode
-    );
     // Always reset flags when a modal is closed
     setIsProcessing(false);
     setCurrentModal(null);
@@ -106,7 +100,6 @@ export default function UserForm({
 
     // Only call onCancel when closing the success modal
     if (currentModal === "success") {
-      console.log("UserForm calling onCancel for success modal");
       onCancel();
     }
   };

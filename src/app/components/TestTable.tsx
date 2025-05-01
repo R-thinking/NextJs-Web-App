@@ -36,7 +36,7 @@ export default function TestTable({ initialTests }: TServerData) {
 
   // Debug useEffect
   useEffect(() => {
-    console.log("deletingId changed:", deletingId);
+    // console.log removed
   }, [deletingId]);
 
   const filteredTests = useMemo(() => {
