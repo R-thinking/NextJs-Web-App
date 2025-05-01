@@ -2,6 +2,7 @@
 import { prisma } from "@/lib/prisma";
 import { TSafeTest } from "@/types/test";
 import TestTable from "./components/TestTable";
+import Navigation from "./components/Navigation";
 
 export default async function TestList() {
   const tests = await prisma.test.findMany();
@@ -21,6 +22,8 @@ export default async function TestList() {
           Manage your team members and their information
         </p>
       </header>
+
+      <Navigation />
 
       <TestTable initialTests={JSON.stringify(convertedTests)} />
     </div>
