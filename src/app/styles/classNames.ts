@@ -20,7 +20,7 @@ export const styles = {
   tableCellText:
     "font-medium text-2xs sm:text-sm text-black truncate block w-full max-w-full",
   responsiveTable:
-    "w-full overflow-x-auto scrollbar-thin pb-2 -mx-3 sm:mx-0 px-3 touch-pan-x",
+    "w-full overflow-x-auto scrollbar-thin pb-2 -mx-3 sm:mx-0 px-3",
 
   // Card styles
   card: "bg-white rounded-lg shadow-lg overflow-hidden max-w-full mx-auto",
