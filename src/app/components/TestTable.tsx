@@ -326,9 +326,9 @@ export default function TestTable({ initialTests }: TServerData) {
             <colgroup>
               <col style={{ width: "25%" }} />
               <col style={{ width: "30%" }} />
-              <col style={{ width: "10%" }} />
               <col style={{ width: "15%" }} />
-              <col style={{ width: "20%" }} />
+              <col style={{ width: "15%" }} />
+              <col style={{ width: "10%" }} />
             </colgroup>
             <thead className="bg-gray-50">
               <tr>
@@ -345,7 +345,7 @@ export default function TestTable({ initialTests }: TServerData) {
                   Phone
                 </th>
                 <th
-                  className={`${styles.tableHeader} text-center`}
+                  className={`${styles.tableHeader} text-left`}
                   style={{ minWidth: "40px" }}
                 >
                   Age
@@ -357,7 +357,7 @@ export default function TestTable({ initialTests }: TServerData) {
                   Created
                 </th>
                 <th
-                  className={`${styles.tableHeader} text-right`}
+                  className={`${styles.tableHeader} text-left`}
                   style={{ minWidth: "100px" }}
                 >
                   Actions
@@ -386,7 +386,7 @@ export default function TestTable({ initialTests }: TServerData) {
                     </span>
                   </td>
                   <td
-                    className={`${styles.tableCell} text-gray-700 font-medium text-center`}
+                    className={`${styles.tableCell} text-gray-700 font-medium text-left`}
                   >
                     <span className="block truncate text-2xs sm:text-sm">
                       {test.age !== null ? test.age : "N/A"}
@@ -406,9 +406,9 @@ export default function TestTable({ initialTests }: TServerData) {
                     </span>
                   </td>
                   <td
-                    className={`${styles.tableCell} text-right text-2xs sm:text-sm font-medium`}
+                    className={`${styles.tableCell} text-left text-2xs sm:text-sm font-medium`}
                   >
-                    <div className="flex flex-row justify-end gap-1 sm:gap-2">
+                    <div className="flex flex-row justify-start gap-1 sm:gap-2">
                       <button
                         onClick={() => {
                           // Cancel any ongoing "add user" operation when edit is clicked
