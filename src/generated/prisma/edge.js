@@ -127,7 +127,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/jihojun/Documents/Programming/nextjs-supabase-practice/src/generated/prisma",
+      "value": "/Users/r-thinking/Documents/Programming/user-management-with-nextjs/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -141,14 +141,14 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/jihojun/Documents/Programming/nextjs-supabase-practice/prisma/schema.prisma",
+    "sourceFilePath": "/Users/r-thinking/Documents/Programming/user-management-with-nextjs/src/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
     "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
-  "relativePath": "../../../prisma",
+  "relativePath": "../../prisma",
   "clientVersion": "6.6.0",
   "engineVersion": "f676762280b54cd07c770017ed3711ddde35f37a",
   "datasourceNames": [
@@ -164,8 +164,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\n/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.\nmodel Test {\n  id         BigInt   @id @default(autoincrement())\n  created_at DateTime @default(now()) @db.Timestamptz(6)\n  name       String?  @default(\"\")\n  phone      String?\n  age        Decimal? @db.Decimal\n}\n",
-  "inlineSchemaHash": "8e6dbd7478c69fa87591fdd560d87f31ada6dfdf33153c54c92ae9f7cf6fe6c6",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\n/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.\nmodel Test {\n  id         BigInt   @id @default(autoincrement())\n  created_at DateTime @default(now()) @db.Timestamptz(6)\n  name       String?  @default(\"\")\n  phone      String?\n  age        Decimal? @db.Decimal\n}\n",
+  "inlineSchemaHash": "4e8e27ee2403e33f8e3a7d05358ce81f1783298e3078b3213f3aac52bd769f94",
   "copyEngine": true
 }
 config.dirname = '/'
