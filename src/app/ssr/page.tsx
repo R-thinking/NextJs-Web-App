@@ -3,8 +3,25 @@ import { TSafeTest } from "@/types/test";
 import TestTable from "../components/TestTable";
 import Navigation from "../components/Navigation";
 
+// Force dynamic rendering and disable caching for always fresh data
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
+
 export default async function SSRPage() {
-  const tests = await prisma.test.findMany();
+  // Add headers to prevent caching at multiple levels
+  const headers = new Headers();
+  headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+  headers.set('Pragma', 'no-cache');
+  headers.set('Expires', '0');
+
+  // Fetch latest data with no caching
+  const tests = await prisma.test.findMany({
+    orderBy: {
+      created_at: 'desc' // Always get newest first
+    }
+  });
+  
   const convertedTests = tests.map((test) => ({
     ...test,
     id: test.id.toString(), // ✅ convert BigInt → string
